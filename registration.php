@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['user'])){
+    header('Location: profile.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,45 +12,37 @@ session_start();
     <title>Registration</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
+<body>
 <form action="vendor/signup.php" method="post" enctype="multipart/form-data">
     <div>
-        <label>Firstname</label>
-        <div>
-            <input type="text" name="firstname" placeholder="Enter your first name" />
-
-        </div>
+        <label for="firstname">Firstname</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required />
     </div>
     <div>
-        <label>Surname</label>
-        <div>
-            <input type="text" name="surname" placeholder="Enter your  surname" />
-        </div>
+        <label for="surname">Surname</label>
+        <input type="text" id="surname" name="surname" placeholder="Enter your surname" required />
     </div>
     <div>
-        <label>Create avatar</label>
-        <div>
-            <input type="file" name="avatar" />
-        </div>
+        <label for="avatar">Create avatar</label>
+        <input type="file" id="avatar" name="avatar" required />
     </div>
     <div>
-        <div>
-
-    <label>Email</label>
-    <input type="email" name="email" placeholder="Enter your email">
-        </div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
     </div>
     <div>
-        <label>Username</label>
-        <div>
-            <input type="text" name="username" placeholder="Enter your username" />
-        </div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required />
     </div>
-
-    <label>Password</label>
-    <input type="password" name="password" placeholder="Enter your password">
-    <label>Confirm password</label>
-    <input type="password" name="password_confirmation" placeholder="Confirm your password">
-    <button>Create account</button>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+    </div>
+    <div>
+        <label for="password_confirmation">Confirm password</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required />
+    </div>
+    <button type="submit">Create account</button>
     <p>Already have account?
         <a href="index.php">Authorization</a>
     </p>
@@ -58,6 +53,5 @@ session_start();
     unset($_SESSION['message']);
     ?>
 </form>
-<!-- Registration form -->
 </body>
 </html>
